@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
-require
+require 'lib/player'
 
-puts "This is tick tack toe"
+puts "--------------This is tick tack toe game ----------------"
+
+player_o = player("X")
+player_x = player("O")
+players(player_x, player_o)
 
 
 
