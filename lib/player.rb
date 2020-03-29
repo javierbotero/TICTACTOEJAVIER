@@ -1,6 +1,14 @@
-def players (player_x, player_o)
-  2.loop { |x|
-    puts "write a name for the player #{x} #{x == 1 ? 'X' : 'Y'}]"
-    x == 1 ? player_x = x : player_o = x
+def players(letter, player = false)
+  playerName = ''  
+  loop {
+    puts "write a name for the player #{letter}"
+    playerName = gets.chomp.match(/^[a-zA-Z\s\d]+$/) 
+     if playerName = gets.chomp : "Write a regular name"
+    if player == playerName
+      puts "Be original, writen another name"
+      next
+    end
+    break
   }
+  playerName
 end
