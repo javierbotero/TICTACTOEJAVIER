@@ -22,7 +22,7 @@ print "The main idea is to complete an entire line, \n could be horizontally, ve
 board.display_board
 switcher = true
 counter = 1
-while switcher
+while switcher  
   if counter.odd?
     board.mark player_x.name, player_x.sign
   else
@@ -31,10 +31,9 @@ while switcher
   board.display_board
   winner = board.evaluation
   if winner 
-    board.display_board
     board.result(winner == "X" ? player_x : player_o)
     counter = board.reset
-  end  
+  end
   counter += 1
   board.reset if counter > 9
 end
