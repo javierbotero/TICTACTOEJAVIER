@@ -63,12 +63,20 @@ class Board
     end    
   end
 
-  def reset    
+  def reset
     @board.each_key { |key| @board[key] = key }      
     end
     display_board
-    puts "Do you want to play again? (Y/N)"
-    exit if %w[N n].include?(gets.chomp)
+    while true do
+      puts "Do you want to play again? (Y/N)"
+      answer = gets.chomp
+      if %w[Y y N n].include?(answer)
+        break if %w[Y y].include?(answer)
+        exit
+      else
+        puts "Please write 'Y' for yes or 'N' for no"
+      end
+    end
     0
   end
 
