@@ -34,9 +34,14 @@ class Board
       puts "player #{name} select a number"      
       selection = gets.chomp.to_i
       if selection > 0 && selection < 10
-        self.board[selection] = sign if self.board[selection].is_a? Integer
-        display_board
-        break
+        if @board[selection].is_a? Integer
+          @board[selection] = sign
+          display_board
+          break
+        else
+          puts "This field has been asigned"
+          next
+        end
       else
         puts "please write a number between and including 1 and 9"
       end      
@@ -68,7 +73,7 @@ class Board
     @board.each_key { |key| @board[key] = key }    
     while true 
       puts "Do you want to play again? (Y/N)"
-      answer = gets.chomp
+      answer = gets.chomp      
       if %w[Y y N n].include?(answer)
         break if %w[Y y].include?(answer)
         exit
@@ -88,5 +93,5 @@ class Board
     else     
       puts "Player 2: #{self.scoreO} \nPlayer 1: #{self.scoreX}"
     end
-  end 
+  end
 end
