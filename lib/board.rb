@@ -31,7 +31,7 @@ class Board
 
   def mark (name, sign)
     loop do
-      puts "player #{name} select a number"
+      puts "player #{name} select a number"      
       selection = gets.chomp.to_i
       if selection > 0 && selection < 10
         self.board[selection] = sign if self.board[selection].is_a? Integer
@@ -39,6 +39,7 @@ class Board
       else
         puts "please write a number between and including 1 and 9"
       end
+      display_board
     end
   end
 
@@ -64,10 +65,8 @@ class Board
   end
 
   def reset
-    @board.each_key { |key| @board[key] = key }      
-    end
-    display_board
-    while true do
+    @board.each_key { |key| @board[key] = key }    
+    while true 
       puts "Do you want to play again? (Y/N)"
       answer = gets.chomp
       if %w[Y y N n].include?(answer)
