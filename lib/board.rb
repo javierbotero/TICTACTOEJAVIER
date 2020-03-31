@@ -35,11 +35,11 @@ class Board
       selection = gets.chomp.to_i
       if selection > 0 && selection < 10
         self.board[selection] = sign if self.board[selection].is_a? Integer
+        display_board
         break
       else
         puts "please write a number between and including 1 and 9"
-      end
-      display_board
+      end      
     end
   end
 

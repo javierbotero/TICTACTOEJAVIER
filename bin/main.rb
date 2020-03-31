@@ -52,6 +52,5 @@ while switcher
     counter = board.reset
   end
   counter += 1
-  board.display_board
   board.reset if counter > 9
 end
