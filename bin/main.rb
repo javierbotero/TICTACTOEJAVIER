@@ -3,7 +3,7 @@ require './lib/player'
 require './lib/board'
 
 puts '--||---||---- ** This is the tick tack toe game ** ----||--||---'
-def board_numbers
+board_numbers = Proc.new do
   9.times { |x|
     if x % 3 == 0
       print "\n-------------\n|"
@@ -14,7 +14,7 @@ def board_numbers
     end
   }
 end
-board_numbers
+board_numbers.call
 player_x = nil
 player_o = nil
 i = 1
@@ -35,14 +35,13 @@ loop do
   i += 1
 end
 board = Board.new(player_x, player_o)
-print "\n\nThe main idea is to complete an entire line, \n could be horizontally, vertically, \n or an inclined line. \n Each pleayer one at a time choose a field with \n a given number show in the board below"
-board_numbers
-puts "\n\n"
+print "\nThe main idea is to complete an entire line, could be horizontally, vertically, \n or an inclined line. Each pleayer one at a time choose a field with \n a given number show in the board below"
+board_numbers.call
 switcher = true
 counter = 1
 while switcher  
-  if counter.odd?
-    board.mark player_x.name, player_x.sign
+  if counter.odd?    
+    board.mark player_x.name, player_x.sign   
   else
     board.mark player_o.name, player_o.sign
   end
